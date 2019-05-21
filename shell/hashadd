@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FILENAME=$(echo $1 | cut -f 1 -d '.')
+EXTENSION=$(echo $1 | cut -f 2 -d '.')
+
+HASH=$(md5sum $1 | awk '{print $1;}')
+OUTPUT=$FILENAME
+OUTPUT+="_md5_"
+OUTPUT+="$HASH.$EXTENSION"
+cp $1 $OUTPUT
