@@ -1,0 +1,3 @@
+#!/bin/sh
+timew start "$(basename `git rev-parse --show-toplevel`) - $(git branch | grep \* | cut -d ' ' -f2)" :quiet
+notify-send "Now tracking: $(basename `git rev-parse --show-toplevel`) - $(git branch | grep \* | cut -d ' ' -f2)"
