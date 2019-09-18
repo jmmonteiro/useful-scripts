@@ -1,0 +1,10 @@
+#!/bin/bash
+
+python3.6 -m venv .venv
+source .venv/bin/activate
+touch requirements.txt
+pip install -r requirements.txt
+
+# Add environemnt to workspace
+workspace=$(ls *.code-workspace)
+cat $workspace | jq '.settings += {"python.pythonPath": "${workspaceFolder}/.venv/bin/python3"}' | tee $workspace
